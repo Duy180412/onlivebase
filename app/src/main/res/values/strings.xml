@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="label_nav_home">Trang Chủ</string>
+    <string name="label_nav_category">Danh Mục</string>
+    <string name="label_nav_schedule">Lịch Phát</string>
+    <string name="label_nav_notification">Thông báo</string>
+    <string name="label_nav_profile">Cá Nhân</string>
+</resources>
