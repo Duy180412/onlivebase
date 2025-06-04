@@ -14,6 +14,8 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,16 +24,20 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import kotlinx.coroutines.delay
 import vn.vplay.vlive.myapplication.domain.entity.HomeContentUi
+import vn.vplay.vlive.myapplication.presentation.model.IContentUi
 
 @Preview(showBackground = true)
 @Composable
-fun HomeScreen() {
-    val item: List<HomeContentUi> = emptyList()
+fun HomeScreen(
+    vm:HomeViewModel = hiltViewModel()
+) {
+    val slidesUi: List<IContentUi> by vm.slides.observeAsState(emptyList())
     LazyColumn {
         item {
-            CircularPager(item)
+            CircularPager(slidesUi)
         }
     }
 }
@@ -39,7 +45,7 @@ fun HomeScreen() {
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun CircularPager(
-    items: List<HomeContentUi>,
+    items: List<IContentUi>,
     repeatCount: Int = 3,
     modifier: Modifier = Modifier
 ) {

@@ -1,8 +1,9 @@
-package vn.vplay.vlive.myapplication
+package vn.vplay.vlive.myapplication.presentation
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
 class MainApplication : Application() {
+
 }

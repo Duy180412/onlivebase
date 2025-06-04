@@ -7,11 +7,14 @@ import vn.vplay.vlive.myapplication.presentation.extension.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomViewModel @Inject constructor(
+class HomeViewModel @Inject constructor(
     private val getHomeSlidesUseCase: GetHomeSlidesUseCase
 ) : ViewModel() {
     val slides = getHomeSlidesUseCase.data
 
+    init {
+        featSlides()
+    }
     fun featSlides() = launch {
         getHomeSlidesUseCase()
     }
