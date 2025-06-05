@@ -5,6 +5,7 @@ import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -102,6 +103,7 @@ fun BottomNavigationBar(
                 },
                 label = { NavigationText(label = item.label, isSelected = selected) },
                 selected = selected,
+                colors = NavigationBarItemDefaults.colors(indicatorColor = Color.Transparent),
                 onClick = {
                     navController.navigate(item.route) {
                         popUpTo(navController.graph.startDestinationRoute ?: "") {

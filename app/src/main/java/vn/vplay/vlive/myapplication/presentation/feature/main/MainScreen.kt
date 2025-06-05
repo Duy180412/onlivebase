@@ -28,12 +28,8 @@ fun MainScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color131313)
-            .padding(
-                bottom = WindowInsets.navigationBars
-                    .asPaddingValues()
-                    .calculateBottomPadding()
-            )
+            .background(Color.Transparent)
+            .padding()
     ) {
         Scaffold(
             modifier = Modifier.fillMaxSize(),

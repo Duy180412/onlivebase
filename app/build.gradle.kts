@@ -94,6 +94,8 @@ dependencies {
     // livedata
     implementation(libs.androidx.runtime.livedata)
     implementation(libs.androidx.multidex)
+    //
+    implementation (libs.coil.kt.coil.compose)
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.foundation)
