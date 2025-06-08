@@ -31,13 +31,3 @@ fun NavigationText(
         color = if (isSelected) Color1877F2 else ColorD6D6D6
     )
 }
-
-@Composable
-fun Text(
-     text:String?,
-     isSelected: Boolean,
-     type: TextType,
-     modifier: Modifier = Modifier
-){
-
-}

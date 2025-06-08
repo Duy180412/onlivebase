@@ -8,10 +8,16 @@ interface IIsSelected {
     var isSelected: Boolean
 }
 
-interface ISlideUi : IContentUi,IIsSelected {
+interface ISlideItemUi : IIsSelected {
     val iSlideEntity: ISideEntity
 
-    class SlideUi(override val iSlideEntity: ISideEntity) : ISlideUi {
+    class SlideItemUi(override val iSlideEntity: ISideEntity) : ISlideItemUi {
         override var isSelected: Boolean = false
     }
+}
+
+interface ISlideUi : IContentUi {
+    val list: List<ISlideItemUi>
+
+    class SlideUi(override val list: List<ISlideItemUi>) : ISlideUi
 }

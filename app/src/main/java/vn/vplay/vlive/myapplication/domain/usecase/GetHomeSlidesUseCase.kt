@@ -1,27 +1,28 @@
 package vn.vplay.vlive.myapplication.domain.usecase
 
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import vn.vplay.vlive.myapplication.data.mapper.toEntity
-import vn.vplay.vlive.myapplication.domain.entity.IEventEntity
-import vn.vplay.vlive.myapplication.domain.entity.ILiveSlideEntity
-import vn.vplay.vlive.myapplication.domain.entity.ISideEntity
-import vn.vplay.vlive.myapplication.domain.entity.IVodSlideEntity
+import vn.vplay.vlive.myapplication.domain.help.StateData
+import vn.vplay.vlive.myapplication.domain.help.mutableStateFlow
+import vn.vplay.vlive.myapplication.domain.help.postValue
 import vn.vplay.vlive.myapplication.domain.repository.ContentRepo
-import vn.vplay.vlive.myapplication.presentation.extension.cast
-import vn.vplay.vlive.myapplication.presentation.help.SingleLiveEvent
 import vn.vplay.vlive.myapplication.presentation.model.IContentUi
+import vn.vplay.vlive.myapplication.presentation.model.ISlideItemUi
 import vn.vplay.vlive.myapplication.presentation.model.ISlideUi
 import javax.inject.Inject
 
 class GetHomeSlidesUseCase @Inject constructor(private val homeRepository: ContentRepo) {
-    val data = SingleLiveEvent<List<IContentUi>>()
+    private val _data = mutableStateFlow<IContentUi>()
+    val data: StateFlow<StateData<IContentUi>> = _data.asStateFlow()
     suspend operator fun invoke() {
-        val list =  homeRepository.getSlides()
+        val list = homeRepository.getSlides()
             .data
             ?.data
             .orEmpty()
             .map { it.toEntity() }
-            .map { ISlideUi.SlideUi(it) }
-        data.postValue(list)
+            .map { ISlideItemUi.SlideItemUi(it) }
+        val listSlide = ISlideUi.SlideUi(list)
+        _data.postValue(listSlide)
     }
-
 }

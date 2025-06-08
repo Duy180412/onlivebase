@@ -5,4 +5,8 @@
     <string name="label_nav_schedule">Lịch Phát</string>
     <string name="label_nav_notification">Thông báo</string>
     <string name="label_nav_profile">Cá Nhân</string>
+    <string name="text_sub_title_slide_vod">%1$s  •  %2$s</string>
+    <string name="txt_news_is_updating">Tin tức đang được cập nhật</string>
+    <string name="live_and_league">Trực tiếp \u2022 %s</string>
+
 </resources>

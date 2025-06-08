@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBars
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -18,21 +19,19 @@ import androidx.navigation.compose.rememberNavController
 import vn.vplay.vlive.myapplication.presentation.components.BottomNavItem
 import vn.vplay.vlive.myapplication.presentation.components.BottomNavigationBar
 import vn.vplay.vlive.myapplication.presentation.feature.home.HomeScreen
-import vn.vplay.vlive.myapplication.presentation.theme.Color131313
 
 @Preview(showBackground = true)
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()
-
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Transparent)
-            .padding()
+            .background(Color.Red)
     ) {
         Scaffold(
             modifier = Modifier.fillMaxSize(),
+            contentWindowInsets = WindowInsets(0),
             bottomBar = { BottomNavigationBar(navController = navController) },
             content = { innerPadding ->
                 NavHost(
